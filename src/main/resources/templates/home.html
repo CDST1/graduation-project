@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Online Rent</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Welcome, <span th:text="${username}"></span>!</h1>
+</header>
+<nav>
+    <a href="/search" class="btn">Поиск</a>
+    <a href="/rentOut" class="btn">Сдать недвижимость</a>
+    <a href="/profile" class="btn">Изменить профиль</a>
+    <a href="/property/edit" class="btn">Редактировать объекты</a>
+    <a href="/rentals/manage" class="btn">Оценить аренду</a>
+    <a href="/" class="btn">Выйти</a>
+</nav>
+
+<section class="image-gallery">
+    <div class="image-card">
+        <img src="/images/norway.jpg" alt="Norway">
+        <p class="image-caption">Norway</p>
+    </div>
+    <div class="image-card">
+        <img src="/images/usa.jpg" alt="USA">
+        <p class="image-caption">USA</p>
+    </div>
+    <div class="image-card">
+        <img src="/images/india.jpg" alt="India">
+        <p class="image-caption">India</p>
+    </div>
+    <div class="image-card">
+        <img src="/images/brazil.jpg" alt="Brazil">
+        <p class="image-caption">Brazil</p>
+    </div>
+</section>
+
+<footer>
+    <p>Online Rent Platform © 2024</p>
+</footer>
+</body>
+</html>

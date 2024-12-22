@@ -1,0 +1,37 @@
+<head>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<header>
+  <h1>Редактирование ваших объектов</h1>
+</header>
+<div class="back-to-home">
+  <a href="/home">Домой</a>
+</div>
+
+<div th:each="property : ${properties}" class="property-item">
+  <form th:action="@{/property/edit}" method="post">
+    <input type="hidden" name="propertyId" th:value="${property.propertyId}"/>
+
+    <label th:for="'title-' + ${property.propertyId}">Название:</label>
+    <input type="text" th:id="'title-' + ${property.propertyId}" name="title" th:value="${property.title}" required/>
+    <br/>
+
+    <label th:for="'description-' + ${property.propertyId}">Описание:</label>
+    <textarea th:id="'description-' + ${property.propertyId}" name="description" required th:text="${property.description}"></textarea>
+    <br/>
+
+    <label th:for="'city-' + ${property.propertyId}">Город:</label>
+    <input type="text" th:id="'city-' + ${property.propertyId}" name="city" th:value="${property.city}" required/>
+    <br/>
+
+    <label th:for="'price-' + ${property.propertyId}">Цена:</label>
+    <input type="number" th:id="'price-' + ${property.propertyId}" name="price" th:value="${property.price}" min="0" required/>
+    <br/>
+
+    <label th:for="'rooms-' + ${property.propertyId}">Количество комнат:</label>
+    <input type="number" th:id="'rooms-' + ${property.propertyId}" name="rooms" th:value="${property.rooms}" min="1" required/>
+    <br/>
+
+    <button type="submit">Обновить объект</button>
+  </form>
+</div>
