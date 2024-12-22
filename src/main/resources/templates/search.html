@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Поиск недвижимости</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Поиск недвижимости</h1>
+</header>
+<div class="back-to-home">
+  <a href="/home">Домой</a>
+</div>
+<form action="/search" method="get">
+  <label for="city">Город:</label>
+  <input type="text" id="city" name="city"><br><br>
+
+  <label for="minPrice">Минимальная цена:</label>
+  <input type="number" id="minPrice" name="minPrice" step="0.01"><br><br>
+
+  <label for="maxPrice">Максимальная цена:</label>
+  <input type="number" id="maxPrice" name="maxPrice" step="0.01"><br><br>
+
+  <label for="rooms">Количество комнат:</label>
+  <input type="number" id="rooms" name="rooms"><br><br>
+
+  <button type="submit">Искать</button>
+</form>
+
+<div>
+  <h2>Результаты поиска:</h2>
+  <div th:if="${properties != null}">
+    <div th:each="property : ${properties}">
+      <h3 th:text="${property.title}"></h3>
+      <p th:text="${property.description}"></p>
+      <p>
+        <span th:text="${property.city}"></span> |
+        <span th:text="${property.price}"></span> USD |
+        <span th:text="${property.rooms}"></span> комнат
+      </p>
+      <form th:action="@{/rent}" method="post">
+        <input type="hidden" name="propertyId" th:value="${property.propertyId}" />
+        <button type="submit">Арендовать</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Online Rent Platform © 2024</p>
+</footer>
+</body>
+</html>

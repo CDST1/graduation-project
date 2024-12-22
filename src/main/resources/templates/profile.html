@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление профиля</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<header>
+  <h1>Обновить ваш профиль</h1>
+</header>
+<div class="back-to-home">
+  <a href="/home">Домой</a>
+</div>
+<body>
+
+<form action="/profile" method="post">
+  <label for="fullName">Полное имя:</label>
+  <input type="text" id="fullName" name="fullName" th:value="${fullName}" required><br><br>
+
+  <label for="city">Город:</label>
+  <input type="text" id="city" name="city" th:value="${city}" required><br><br>
+
+  <label for="country">Страна:</label>
+  <input type="text" id="country" name="country" th:value="${country}" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" th:value="${email}" required><br><br>
+
+  <label for="birthDate">Дата рождения:</label>
+  <input type="date" id="birthDate" name="birthDate" th:value="${birthDate}" required><br><br>
+
+  <button type="submit">Обновить</button>
+</form>
+</body>
+</html>

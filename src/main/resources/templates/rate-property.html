@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление арендой</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<header>
+    <h1>Управление арендой</h1>
+</header>
+<body>
+<div class="back-to-home">
+    <a href="/home">Домой</a>
+</div>
+<div>
+    <h2>Ваши аренды:</h2>
+    <ul>
+        <li th:each="rental : ${rentals}">
+            <hr>
+            <p>Свойство ID: <span th:text="${rental.propertyId}"></span></p>
+            <p>Арендодатель ID: <span th:text="${rental.landlordId}"></span></p>
+            <p>Дата начала: <span th:text="${rental.startDate}"></span></p>
+            <p>Дата окончания: <span th:text="${rental.endDate}"></span></p>
+
+            <!-- Отдельная форма для каждой аренды -->
+            <form action="/rentals/update-rating" method="post">
+                <input type="hidden" name="rentalId" th:value="${rental.rentalId}" />
+                <div>
+                    <span>Рейтинг арендатора:</span>
+                    <input type="number" name="tenantRating" min="1" max="5" required />
+                </div>
+                <div>
+                    <span>Рейтинг арендодателя:</span>
+                    <input type="number" name="landlordRating" min="1" max="5" required />
+                </div>
+                <button type="submit">Обновить рейтинг</button>
+            </form>
+
+        </li>
+    </ul>
+</div>
+</body>
+</html>
